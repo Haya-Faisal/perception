@@ -127,7 +127,7 @@ body {
   display: none;
   background: none;
   border: none;
-  color: #fff;
+  color: var(--dark);
   font-size: 22px;
   cursor: pointer;
   padding: 4px;
@@ -183,6 +183,15 @@ body {
   display: block;
   mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+  animation: heroFocusIn 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* On page load, the whole illustration starts softly out of
+   focus and gently sharpens into place — like a camera lens
+   settling — instead of a generic loading spinner. Runs once. */
+@keyframes heroFocusIn {
+  0%   { filter: blur(24px); opacity: 0.5; }
+  100% { filter: blur(0px);  opacity: 1; }
 }
 
 /* Seagulls drift slowly right to left, looping forever.
@@ -239,7 +248,8 @@ body {
   max-width: 860px;
   width: 90%;
   padding: 0 24px;
-  animation: heroFadeIn 0.9s ease both;
+  animation: heroFadeIn 0.7s ease both;
+  animation-delay: 1.2s; /* waits for the illustration's blur-to-focus entrance to finish */
 }
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(18px); }
