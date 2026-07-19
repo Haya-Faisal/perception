@@ -200,14 +200,55 @@ body {
    The site's global prefers-reduced-motion rule (top of this
    file) already collapses this to a static pose for anyone
    who has motion reduced. */
+/* Gull positioning: CSS transform overrides the SVG attribute */
+.gull-wrap {
+  transform: translate(
+    calc(var(--gull-x, 1650) * 1px),
+    calc(var(--gull-y, 140) * 1px)
+  ) scale(var(--gull-scale, 0.9));
+  transform-box: fill-box;
+}
+
 .gull {
   animation-name: gullFly;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  transform: translateX(0);
 }
+
 @keyframes gullFly {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-2000px); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(var(--gull-distance, -2000px)); }
+}
+
+/* Desktop default */
+:root {
+  --gull-distance: -2000px;
+  --gull-mobile-offset: 0;
+}
+
+/* Tablet: birds start closer, fly shorter distance */
+@media (max-width: 1024px) {
+  :root {
+    --gull-distance: -1400px;
+    --gull-mobile-offset: -100;
+  }
+}
+
+/* Mobile: birds start much closer, fly much shorter */
+@media (max-width: 768px) {
+  :root {
+    --gull-distance: -900px;
+    --gull-mobile-offset: -400;
+  }
+}
+
+/* Small mobile: even closer */
+@media (max-width: 480px) {
+  :root {
+    --gull-distance: -700px;
+    --gull-mobile-offset: -550;
+  }
 }
 
 /* Flip-book wing flap: each of the 4 stacked frame-paths is visible
