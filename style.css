@@ -266,7 +266,7 @@ body {
 .hero-title {
   font-family: var(--font-head);
   font-size: clamp(42px, 16vw, 90px);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--hill-blue);
   line-height: 1.08;
   margin-bottom: 16px;
@@ -666,7 +666,7 @@ footer { background: var(--hill-blue-dark); padding: 36px 8%; }
   .curriculum-cta { flex-direction: column; align-items: flex-start; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .hero-body  { font-size: 14px; margin-bottom: 20px; }
-  .hero       { padding-top: 11vh; }
+  .hero       { padding-top: 25vh; }
 }
 
 @media (max-width: 600px) {
